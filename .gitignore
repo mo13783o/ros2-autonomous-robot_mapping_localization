@@ -2,7 +2,10 @@
 build/
 install/
 log/
-
+*.log
+*.pyc
+__pycache__/
+.vscode/
 # Colcon / CMake
 *.log
 *.cmake

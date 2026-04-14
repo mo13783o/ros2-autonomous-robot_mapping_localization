@@ -37,10 +37,10 @@ install(TARGETS
 # =========================
 # 🔹 Install Folders (🔥 المهم هنا)
 # =========================
-#install(
-#  DIRECTORY launch rviz config
- # DESTINATION share/${PROJECT_NAME}
-#S)
+install(
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}
+)
 
 # =========================
 # 🔹 Final

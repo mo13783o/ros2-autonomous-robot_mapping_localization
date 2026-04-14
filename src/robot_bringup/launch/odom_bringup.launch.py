@@ -14,7 +14,7 @@ def generate_launch_description():
             package='encoder_odometry',
             executable='encoder_odom_node',
             name='encoder_odometry_node',
-            parameters=[{'port': '/dev/ttyACM0'}],
+            parameters=[{'port': '/dev/ttyACM1'}],
             output='screen'
         ),
 
