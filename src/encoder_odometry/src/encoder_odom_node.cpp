@@ -106,8 +106,18 @@ private:
   void timerCallback()
   {
     std::string line;
+    std::string latest_valid_line = "";
+
+    // Read everything to empty the serial buffer, but only save the newest line
     while (readLine(line)) {
-      processLine(line);
+      if (line.rfind("ENC", 0) == 0) {
+        latest_valid_line = line;
+      }
+    }
+
+    // Process only the single most recent data packet
+    if (!latest_valid_line.empty()) {
+      processLine(latest_valid_line);
     }
   }
 
@@ -249,7 +259,7 @@ private:
     tf.transform.rotation.z = q.z();
     tf.transform.rotation.w = q.w();
 
-    tf_broadcaster_->sendTransform(tf);
+    //tf_broadcaster_->sendTransform(tf);
   }
 
   int fd_;

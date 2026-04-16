@@ -12,7 +12,7 @@ def generate_launch_description():
             name='rplidar_node',
             output='screen',
             parameters=[{
-                'serial_port': '/dev/ttyUSB1',
+                'serial_port': '/dev/ttyUSB0',
                 'serial_baudrate': 115200,
                 'frame_id': 'laser_frame'
             }]
@@ -27,7 +27,7 @@ def generate_launch_description():
                 '0', '0', '0',      # x y z
                 '0', '3.14', '0',   # roll pitch yaw  ← 🔥 التعديل هنا
                 'base_link',
-                'laser'
+                'laser_frame'
             ],
             output='screen'
         )

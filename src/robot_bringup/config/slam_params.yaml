@@ -1,0 +1,30 @@
+slam_toolbox:
+  ros__parameters:
+    # Plugin params
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: VOLLES_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_region_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_loss_function: None
+
+    # ROS Parameters
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link   # 🔥 Crucial: Override the default base_footprint
+    scan_topic: /scan       # Ensure this matches your rplidar topic
+    mode: mapping
+
+    # 🔥 ADD THESE LINES TO FIX THE LIDAR WARNINGS AND SPEED UP UPDATES:
+    
+    # Update the map every 1.0 second (default is usually 5.0s)
+    map_update_interval: 1.0 
+    
+    # Process a new scan after the robot moves 10cm (0.1m)
+    minimum_travel_distance: 0.1 
+    
+    # Process a new scan after the robot rotates ~5.7 degrees (0.1 rad)
+    minimum_travel_heading: 0.1 
+    
+    # Fixes the yellow warnings in your terminal
+    max_laser_range: 12.0
